@@ -1,0 +1,17 @@
+<header>
+  <app-navbar></app-navbar>
+</header>
+<section class="container my-3">
+  <div class="card text-center">
+    <div class="card-header text-primary fw-bolder fs-2 text-start">
+      🎞 Movie Details
+    </div>
+    <div class="card-body">
+      <h3 class="card-title">{{ movie.title }}</h3>
+      <p class="card-text">Directed by: {{ movie.director }}</p>
+      <p class="card-text">Released: {{ movie.release_year }}</p>
+      <p class="card-text">Rating: {{ movie.rating }}</p>
+      <a routerLink="/movies" class="btn btn-danger">Back</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,23 @@
+<header>
+  <app-navbar></app-navbar>
+</header>
+<section class="container my-3">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    @for (movie of movies; track movie.id) {
+      <div class="col">
+        <div class="card p-3 h-100">
+          <!-- <img src="..." class="card-img-top" alt="..."> !-->
+          <div class="card-body">
+            <h3 class="card-title">🎞 {{ movie.title }}</h3>
+            <p class="card-text mb-4">Released {{ movie.release_year | date }}</p>
+            <div class="text-center">
+              <a [routerLink]="['/movies', movie.id]" class="btn btn-success">See more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    } @empty {
+      <p>No movies</p>
+    }
+  </div>
+</section>
