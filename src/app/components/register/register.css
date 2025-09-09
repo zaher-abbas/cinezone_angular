@@ -1,0 +1,4 @@
+label:has(+ input:required)::after {
+  content: " *";
+  color: red;
+}

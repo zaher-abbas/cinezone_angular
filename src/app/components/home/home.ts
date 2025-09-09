@@ -13,5 +13,10 @@ import {Navbar} from '../navbar/navbar';
 })
 export class Home {
 
+  username: string = '';
+
+  ngOnInit() {
+    this.username = localStorage.getItem('userName') ?? 'Guest';
+  }
 
 }

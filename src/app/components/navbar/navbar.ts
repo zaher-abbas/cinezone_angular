@@ -21,8 +21,8 @@ export class Navbar {
   }
 
   ngOnInit() {
-    this.userName = localStorage.getItem('userName') || '';
-    this.email = localStorage.getItem('email') || '';
+    this.userName = localStorage.getItem('userName') ?? '';
+    this.email = localStorage.getItem('email') ?? '';
   }
 
 
@@ -30,8 +30,8 @@ export class Navbar {
     this.authService.logout().subscribe({
       next: () => {
         console.log('logout successful');
-        this.router.navigate(['/home']);
         localStorage.clear();
+        this.router.navigate(['/home']);
       },
       error: (err) => console.log(err)
     })

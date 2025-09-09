@@ -36,7 +36,7 @@ export class Login {
           next: (user) => {
             localStorage.setItem('userName', user.name);
             localStorage.setItem('email', user.email);
-            this.router.navigate(['/movies']);
+            this.router.navigate(['/home']);
           },
           error: (err: HttpErrorResponse) => console.log(err)
         })
