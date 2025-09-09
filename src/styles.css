@@ -3,5 +3,21 @@
 @import "bootstrap-icons/font/bootstrap-icons.css";
 
 body {
+  margin: 0;
   background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 25%, #16213e 50%, #0f4c75 100%);
+  line-height: 2;
+
 }
+
+app-root {
+  min-height: 100dvh; /* covers full viewport, better on mobile than 100vh */
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* header | main grows | footer */
+}
+
+/* Optional: allow main to scroll internally when content is long */
+main {
+  min-height: 0; /* lets 1fr shrink */
+  /* overflow: auto; */ /* enable if you want main to scroll */
+}
+

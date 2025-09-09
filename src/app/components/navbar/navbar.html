@@ -1,34 +1,39 @@
-<nav class="navbar navbar-expand-md bg-primary p-4 navbar-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand"><h2>📽 Cine<span class="text-primary">Zone</span></h2></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link fs-4 text-white btn btn-primary" aria-current="page" routerLink="/home">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link fs-4 text-white btn btn-primary" routerLink="/movies">Movies</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav mb-2 mb-lg-0">
-        @if (userName) {
-          <li class="nav-item"><a class="nav-link fs-4 text-white btn btn-primary rounded me-3"
-                                  routerLink="/profile"><i
-            class="bi bi-person-fill text-success"></i> {{ userName }}</a>
+<header>
+  <nav class="navbar navbar-expand-md bg-primary p-4 navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand"><h2>📽 Cine<span class="text-primary">Zone</span></h2></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMenu"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapseMenu">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link fs-4 text-white btn btn-primary" aria-current="page" routerLink="/home">Home</a>
           </li>
-          <li class="nav-item"><a class="nav-link fs-4 btn btn-danger rounded text-white" (click)="logout()">Log-Out</a>
+          <li class="nav-item">
+            <a class="nav-link fs-4 text-white btn btn-primary" routerLink="/movies">Movies</a>
           </li>
-        } @else {
-          <li class="nav-item"><a class="nav-link fs-4 btn btn-primary me-3 text-white rounded" routerLink="/register">Register</a>
-          </li>
-          <li class="nav-item"><a class="nav-link fs-4 btn btn-primary text-white rounded" routerLink="/login">Login</a>
-          </li>
-        }
-      </ul>
+        </ul>
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          @if (userName) {
+            <li class="nav-item"><a class="nav-link fs-4 text-white btn btn-primary rounded me-3"
+                                    routerLink="/profile"><i
+              class="bi bi-person-fill text-success"></i> {{ userName }}</a>
+            </li>
+            <li class="nav-item"><a class="nav-link fs-4 btn btn-danger rounded text-white"
+                                    (click)="logout()">Log-Out</a>
+            </li>
+          } @else {
+            <li class="nav-item"><a class="nav-link fs-4 btn btn-primary me-3 text-white rounded"
+                                    routerLink="/register">Register</a>
+            </li>
+            <li class="nav-item"><a class="nav-link fs-4 btn btn-primary text-white rounded"
+                                    routerLink="/login">Login</a>
+            </li>
+          }
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
+</header>
