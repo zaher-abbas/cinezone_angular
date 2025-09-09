@@ -32,3 +32,7 @@ export class CategoryMovies {
     });
   }
 }
+
+//- The component is reused when navigating between different category ids.
+// - switchMap ensures a new API call is made whenever the id changes.
+// - distinctUntilChanged prevents redundant reloads if you click the same category again.
