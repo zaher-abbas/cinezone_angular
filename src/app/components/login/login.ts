@@ -12,7 +12,6 @@ import {NgClass} from '@angular/common';
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    Navbar,
     NgClass
   ],
   templateUrl: './login.html',
@@ -24,6 +23,7 @@ export class Login {
   password!: string;
   router: Router = inject(Router);
   errorMsg: string = '';
+  readonly currentUser = inject(AuthService).currentUser;
 
   constructor(private authService: AuthService, private toastr: ToastrService) {
   }
@@ -34,6 +34,7 @@ export class Login {
         this.toastr.success('Login successful');
         this.authService.getUserProfile().subscribe({
           next: (user) => {
+            this.authService.setCurrentUser(user);
             localStorage.setItem('userName', user.name);
             localStorage.setItem('email', user.email);
             this.router.navigate(['/home']);

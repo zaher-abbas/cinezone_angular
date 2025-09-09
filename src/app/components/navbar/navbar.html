@@ -1,25 +1,37 @@
-<header>
-  <nav class="navbar navbar-expand-md bg-primary p-4 navbar-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand"><h2>📽 Cine<span class="text-primary">Zone</span></h2></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMenu"
-              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="collapseMenu">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link fs-4 text-white btn btn-primary" aria-current="page" routerLink="/home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fs-4 text-white btn btn-primary" routerLink="/movies">Movies</a>
-          </li>
-        </ul>
+<nav class="navbar navbar-expand-md bg-primary p-4 navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand"><h2>📽 Cine<span class="text-primary">Zone</span></h2></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMenu"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapseMenu">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link fs-4 text-white btn btn-primary me-3" aria-current="page" routerLink="/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fs-4 text-white btn btn-primary me-3" routerLink="/movies">Movies</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fs-4 text-white btn btn-primary" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false">
+            Categories
+          </a>
+          <ul class="dropdown-menu">
+            @for (category of categories; track category.id) {
+              <li><a class="dropdown-item"
+                     [routerLink]="['/', 'categories', category.id, 'movies']">{{ category.name }}</a></li>
+            }
+          </ul>
+        </li>
+      </ul>
+      <li>
         <ul class="navbar-nav mb-2 mb-lg-0">
-          @if (userName) {
+          @if (currentUser(); as user) {
             <li class="nav-item"><a class="nav-link fs-4 text-white btn btn-primary rounded me-3"
                                     routerLink="/profile"><i
-              class="bi bi-person-fill text-success"></i> {{ userName }}</a>
+              class="bi bi-person-fill text-success"></i> {{ user.name }}</a>
             </li>
             <li class="nav-item"><a class="nav-link fs-4 btn btn-danger rounded text-white"
                                     (click)="logout()">Log-Out</a>
@@ -33,7 +45,6 @@
             </li>
           }
         </ul>
-      </div>
     </div>
-  </nav>
-</header>
+  </div>
+</nav>

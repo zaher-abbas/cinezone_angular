@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, signal} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {User} from '../Interface/User';
@@ -9,6 +9,7 @@ import {User} from '../Interface/User';
 export class AuthService {
 
   API_URL = 'http://localhost:3000';
+  currentUser = signal<User | null>(null);
 
 
   constructor(private http: HttpClient) {
@@ -39,6 +40,10 @@ export class AuthService {
       {
         withCredentials: true
       });
+  }
+
+  setCurrentUser(user: User | null) {
+    this.currentUser.set(user);
   }
 
 }

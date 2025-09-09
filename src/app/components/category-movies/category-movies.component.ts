@@ -2,20 +2,16 @@ import {Component} from '@angular/core';
 import {MoviesService} from '../../services/movies-service';
 import {ActivatedRoute, ParamMap, RouterLink} from '@angular/router';
 import {Movie} from '../../Interface/Movie';
-import {DatePipe} from '@angular/common';
-import {Navbar} from '../navbar/navbar';
 
 @Component({
-  selector: 'app-category',
+  selector: 'app-category-movies',
   imports: [
-    DatePipe,
-    Navbar,
     RouterLink
   ],
-  templateUrl: './category.html',
-  styleUrl: './category.css'
+  templateUrl: './category-movies.component.html',
+  styleUrl: './category-movies.component.css'
 })
-export class Category {
+export class CategoryMovies {
 
   id!: number;
   movies!: Movie[];
@@ -33,7 +29,5 @@ export class Category {
       },
       error: (err) => console.log(err)
     });
-
   }
-
 }

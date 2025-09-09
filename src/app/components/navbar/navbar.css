@@ -2,3 +2,9 @@
   background: linear-gradient(90deg, rgba(12, 12, 12, 0.95) 0%, rgba(26, 26, 46, 0.95) 100%);
   backdrop-filter: blur(10px);
 }
+
+/* Ensure the navbar (and its dropdowns) stack above the page content */
+header, .navbar {
+  position: relative;
+  z-index: 1050; /* higher than typical content */
+}

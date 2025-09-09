@@ -1,0 +1,15 @@
+.card {
+  background: linear-gradient(135deg, #2d1b69 0%, #11998e 100%);
+  color: white;
+}
+
+.card-header {
+  background: linear-gradient(135deg, #3d2b7a 0%, #1db5a6 100%);
+}
+
+
+.movie-title {
+  font-size: 2.5em;
+  font-weight: 700;
+  color: #fff;
+}

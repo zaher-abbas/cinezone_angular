@@ -5,7 +5,7 @@ import {Register} from './components/register/register';
 import {Login} from './components/login/login';
 import {Moviedetails} from './components/moviedetails/moviedetails';
 import {Profile} from './components/profile/profile';
-import {Category} from './components/category/category';
+import {CategoryMovies} from './components/category-movies/category-movies.component';
 
 export const routes: Routes = [
   {
@@ -27,7 +27,7 @@ export const routes: Routes = [
   },
   {
     path: 'categories/:id/movies',
-    component: Category
+    component: CategoryMovies
   },
   {
     path: 'register',
