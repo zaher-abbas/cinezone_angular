@@ -5,6 +5,7 @@ import {Register} from './components/register/register';
 import {Login} from './components/login/login';
 import {Moviedetails} from './components/moviedetails/moviedetails';
 import {Profile} from './components/profile/profile';
+import {Category} from './components/category/category';
 
 export const routes: Routes = [
   {
@@ -23,6 +24,10 @@ export const routes: Routes = [
   {
     path: 'movies/:id',
     component: Moviedetails
+  },
+  {
+    path: 'categories/:id/movies',
+    component: Category
   },
   {
     path: 'register',

@@ -4,13 +4,16 @@ import {AuthService} from '../../services/auth-service';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {Navbar} from '../navbar/navbar';
+import {HttpErrorResponse} from '@angular/common/http';
+import {NgClass} from '@angular/common';
 
 
 @Component({
   selector: 'app-register',
   imports: [
     FormsModule,
-    Navbar
+    Navbar,
+    NgClass
   ],
   templateUrl: './register.html',
   styleUrl: './register.css'
@@ -21,6 +24,7 @@ export class Register {
   email: string = '';
   password: string = '';
   router: Router = inject(Router);
+  errorMsg: string = '';
 
   constructor(private authService: AuthService, private toastr: ToastrService) {
   }
@@ -31,7 +35,10 @@ export class Register {
         this.router.navigate(['/login']);
         this.toastr.success('Registration successful');
       },
-      error: (err) => console.log(err)
+      error: (err: HttpErrorResponse) => {
+        this.errorMsg = err.error.message;
+        this.toastr.error(this.errorMsg);
+      }
     });
   }
 }

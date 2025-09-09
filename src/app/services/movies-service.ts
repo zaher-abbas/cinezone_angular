@@ -21,4 +21,8 @@ export class MoviesService {
     return this.http.get<Movie>(`${this.API_URL}/movies/${id}`);
   }
 
+  getMoviesByCategory(id: number): Observable<Movie[]> {
+    return this.http.get<Movie[]>(this.API_URL + `/categories/${id}/movies`);
+  }
+
 }

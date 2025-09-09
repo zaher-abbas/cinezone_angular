@@ -4,6 +4,7 @@
 <section class="container text-white my-4">
   <h1 class="mb-4">Login</h1>
   <form (ngSubmit)="myForm.valid && onSubmit()" #myForm="ngForm" class="p-3">
+    <div [ngClass]="errorMsg ? 'mb-4 alert alert-danger' : ''">{{ errorMsg }}</div>
     <div class="mb-4">
       <label for="email" class="form-label">Email address</label>
       <input type="email" class="form-control" id="email" required [(ngModel)]="email" name="email" ngModel
@@ -14,15 +15,15 @@
              [class.is-invalid]="emailInput.invalid && (emailInput.dirty || emailInput.touched)"
              [class.is-valid]="emailInput.valid && (emailInput.dirty || emailInput.touched)">
     </div>
-    @if (myForm.submitted && emailInput.errors && emailInput.errors["required"]) {
+    @if (myForm.submitted && myForm.invalid && emailInput.errors && emailInput.errors["required"]) {
       <div class="alert alert-danger">Email is required
       </div>
     }
-    @if (myForm.submitted && emailInput.errors && emailInput.errors["email"]) {
+    @if (myForm.submitted && myForm.invalid && emailInput.errors && emailInput.errors["email"]) {
       <div class="alert alert-danger">Email is not valid
       </div>
     }
-    @if (myForm.submitted && emailInput.errors && emailInput.errors["maxlength"]) {
+    @if (myForm.submitted && myForm.invalid && emailInput.errors && emailInput.errors["maxlength"]) {
       <div class="alert alert-danger">Email must be less than 255 characters
       </div>
     }
@@ -36,15 +37,15 @@
              [class.is-valid]="passwordInput.valid && (passwordInput.dirty || passwordInput.touched)"
       >
     </div>
-    @if (myForm.submitted && emailInput.errors && emailInput.errors["required"]) {
+    @if (myForm.submitted && myForm.invalid && emailInput.errors && emailInput.errors["required"]) {
       <div class="alert alert-danger">Password is required
       </div>
     }
-    @if (myForm.submitted && passwordInput.errors && passwordInput.errors["minlength"]) {
+    @if (myForm.submitted && myForm.invalid && passwordInput.errors && passwordInput.errors["minlength"]) {
       <div class="alert alert-danger">Password must be at least 8 characters long
       </div>
     }
-    @if (myForm.submitted && passwordInput.errors && passwordInput.errors["maxLength"]) {
+    @if (myForm.submitted && myForm.invalid && passwordInput.errors && passwordInput.errors["maxLength"]) {
       <div class="alert alert-danger">Password must be less than 255 characters
       </div>
     }

@@ -5,4 +5,5 @@ export interface Movie {
   rating: number;
   release_year: number;
   category_id: number;
+  category: string;
 }

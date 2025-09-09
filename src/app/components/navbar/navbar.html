@@ -16,16 +16,16 @@
       </ul>
       <ul class="navbar-nav mb-2 mb-lg-0">
         @if (userName) {
-          <li class="nav-item"><a class="nav-link fs-4 text-white btn btn-primary"
-                                  routerLink="/profile">👤 {{ userName }}</a>
+          <li class="nav-item"><a class="nav-link fs-4 text-white btn btn-primary rounded me-3"
+                                  routerLink="/profile"><i
+            class="bi bi-person-fill text-success"></i> {{ userName }}</a>
           </li>
-          <li class="nav-item"><a class="nav-link fs-4 btn btn-danger rounded text-white" (click)="logout()">Log
-            Out</a>
+          <li class="nav-item"><a class="nav-link fs-4 btn btn-danger rounded text-white" (click)="logout()">Log-Out</a>
           </li>
         } @else {
-          <li class="nav-item"><a class="nav-link fs-4 btn btn-primary me-3" routerLink="/register">Register</a>
+          <li class="nav-item"><a class="nav-link fs-4 btn btn-primary me-3 text-white rounded" routerLink="/register">Register</a>
           </li>
-          <li class="nav-item"><a class="nav-link fs-4 btn btn-primary" routerLink="/login">Login</a>
+          <li class="nav-item"><a class="nav-link fs-4 btn btn-primary text-white rounded" routerLink="/login">Login</a>
           </li>
         }
       </ul>
