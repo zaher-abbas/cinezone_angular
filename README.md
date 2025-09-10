@@ -1,7 +1,6 @@
-```markdown
 # 🎬 CineZone App — Angular Front‑End
 
-CineZone is a sleek and responsive front‑end built with Angular for discovering and managing movies.
+CineZone is a sleek and responsive front‑end built with Angular, for discovering and managing movies.
 It connects to a Node.js + Express.js backend with a MySQL database.
 
 🔗 Backend API repository:  
@@ -91,56 +90,56 @@ See the API repository for details.
 - Node.js: 20.x or newer (recommended for Angular 20)
 - npm: 10.x or newer (bundled with Node.js)
 - Angular CLI (optional global install): 20.2.2
-```
 
+```
 bash
 npm install -g @angular/cli@20.2.2
-
 ```
+
 ---
 
 ## 🚀 Getting Started
 
 1) Clone this front‑end repository
-```
 
+```
 bash
 git clone https://github.com/zaher-abbas/cinezone_angular.git
 cd cinezone_angular
-
 ```
+
 2) Install dependencies
-```
 
+```
 bash
 npm install
-
 ```
+
 3) Start the backend API (local)
-```
 
-bash <br>
-git clone https://github.com/zaher-abbas/cinezone_api_express.git <br>
-cd cinezone_api_express <br>
-npm install <br>
+```
+bash
+git clone https://github.com/zaher-abbas/cinezone_api_express.git
+cd cinezone_api_express 
+npm install 
 🚀 npm start
-
 ```
+
 - Note the API base URL once running (e.g., http://localhost:3000).
 
 4) Configure the front‑end API URL (see “Configuration” below)
 
 5) Run the dev server
-```
 
+```
 bash
 npx ng serve
 
 # or (if CLI installed globally)
-
 ng serve
 
 ```
+
 - App will be available at: http://localhost:4200
 
 ---
@@ -151,6 +150,7 @@ Set your API base URL in Angular environment files:
 
 - src/environments/environment.ts (development)
 - src/environments/environment.prod.ts (production)
+
 ```
 
 typescript
@@ -172,7 +172,9 @@ apiBaseUrl: 'https://<YOUR_PRODUCTION_API_HOST>/api' // Update for production
 };
 
 ```
+
 Tips:
+
 - Do not commit secrets.
 - Use placeholders for any private values.
 
@@ -183,7 +185,7 @@ Tips:
 CineZone supports user registration and authentication and restricts movie management features to authenticated users.
 
 - Registration: Users can create an account (name, email, password).
-- Login/Logout: Sessions are established with the API (JWT is created by the server, and stored in a HttpOnly cookie); 
+- Login/Logout: Sessions are established with the API (JWT is created by the server, and stored in a HttpOnly cookie);
 - The UI updates to reflect the current user.
 - Session handling: API calls can be made with credentials when needed (Setting credentials/withCredentials in Angular makes the browser include your HttpOnly JWT cookie with the request,
   and accept Set-Cookie responses), enabling the Node API to authenticate the user via that cookie)
@@ -196,6 +198,7 @@ CineZone supports user registration and authentication and restricts movie manag
   - Unauthenticated users attempting to access protected pages are redirected to the login page.
 
 Backend note:
+
 - If you rely on cookies for sessions, ensure the API is configured with proper CORS headers and allow‑credentials. The front‑end can send credentials where appropriate.
 
 ---
@@ -203,26 +206,32 @@ Backend note:
 ## 🧑‍💻 Development
 
 - Start dev server with live reload:
+
 ```
 
 bash
 npx ng serve
 
 ```
+
 - Lint (if configured):
+
 ```
 
 bash
 npx ng lint
 
 ```
+
 - Format (if you use Prettier):
+
 ```
 
 bash
 npx prettier --write .
 
 ```
+
 ---
 
 ## 🔁 API Proxy (Dev, optional)
@@ -230,6 +239,7 @@ npx prettier --write .
 To avoid CORS during local development, you can use Angular’s proxy:
 
 1) Create a proxy config file (e.g., proxy.conf.json):
+
 ```
 
 json
@@ -243,13 +253,16 @@ json
 }
 
 ```
+
 2) Start dev server with proxy:
+
 ```
 
 bash
 npx ng serve --proxy-config proxy.conf.json
 
 ```
+
 With this, your front‑end can call /api/... directly while Angular forwards requests to the backend. If your API uses cookies for authentication, the proxy approach helps keep calls same‑origin from the browser’s perspective.
 
 ---
@@ -257,31 +270,38 @@ With this, your front‑end can call /api/... directly while Angular forwards re
 ## 🧪 Testing
 
 - Run unit tests in watch mode:
+
 ```
 
 bash
 npx ng test
 
 ```
+
 - Run unit tests once (CI):
+
 ```
 
 bash
 npx ng test --watch=false
 
 ```
+
 Coverage (if enabled in karma.conf):
+
 ```
 
 bash
 npx ng test --code-coverage
 
 ```
+
 ---
 
 ## 📦 Build & Deployment
 
 - Production build:
+
 ```
 
 bash
@@ -292,13 +312,16 @@ npx ng build --configuration production
 npx ng build --prod
 
 ```
+
 - Output directory:
+
 ```
 
 plaintext
 dist/<YOUR_PROJECT_NAME>/
 
 ```
+
 You can deploy the build output to any static host:
 
 - Static servers (Nginx/Apache)
@@ -306,19 +329,24 @@ You can deploy the build output to any static host:
 - GitHub Pages (ensure SPA fallback)
 
 SPA routing note:
+
 - Configure a fallback to index.html for unknown routes to avoid 404s on browser refresh.
 
 Base href:
+
 - If deploying under a sub‑path, set the base href:
+
 ```
 
 bash
 npx ng build --prod --base-href /your-sub-path/
 
 ```
+
 ---
 
 ## 🗂️ Project Structure (typical)
+
 ```
 
 plaintext
@@ -334,6 +362,7 @@ main.ts
 styles.scss
 
 ```
+
 ---
 
 ## 🧩 Troubleshooting
@@ -380,4 +409,5 @@ Please update this section if your repository uses a different license.
 - The CineZone API project maintainers
 
 Happy hacking! 🍿
+
 ```
