@@ -1,80 +1,103 @@
 ```markdown
-# CineZone App (Angular Front‑End)
+# 🎬 CineZone App — Angular Front‑End
 
-CineZone is a modern, responsive Angular front‑end for browsing and managing movies, connecting to a Node.js + Express.js + MySQL backend API.
+CineZone is a sleek and responsive front‑end built with Angular for discovering and managing movies. It connects to a Node.js + Express.js backend with a MySQL database.
 
-Backend repository:
+🔗 Backend API repository:  
 https://github.com/zaher-abbas/cinezone_api_express
 
-This README covers setup, configuration, development workflow, and deployment for the front‑end application.
+---
 
-## Contents
+## 🧭 Table of Contents
 
-- Overview
+- Introduction
 - Features
 - Tech Stack
+- Architecture
 - Prerequisites
 - Getting Started
 - Configuration (Environment)
+- Authentication & Route Protection
 - Development
-- Build and Deployment
+- API Proxy (Dev, optional)
 - Testing
-- Optional: Local API proxy for dev
+- Build & Deployment
+- Project Structure
 - Troubleshooting
 - Contributing
 - License
 
-## Overview
+---
 
-CineZone’s front‑end provides an intuitive UI to explore movies, view details, search and filter content, and interact with the CineZone API. It is optimized for performance and a smooth UX, leveraging Angular’s latest tooling.
+## 📖 Introduction
 
-If you’re setting up both front‑end and back‑end locally, follow the instructions below to configure the API URL in the Angular environment files.
+CineZone delivers a modern movie browsing experience, featuring fast client‑side routing, clean UX, and integration with a RESTful API. Use it locally during development or deploy it to any static hosting provider while pointing it at your API.
 
-## Features
+---
 
-- Modern Angular 20 UI with responsive layout (Bootstrap 5)
-- Movie discovery:
-  - Browse lists (e.g., popular, top rated, etc.)
-  - Search by title and filter by category/genre
-  - Movie details pages
-- Notifications and toasts via ngx-toastr:
-  - Package: https://www.npmjs.com/package/ngx-toastr
-- Client‑side routing (Angular Router)
-- Form handling and validation (Angular Forms)
-- Optimized change detection and RxJS data flows
-- Production build optimizations
+## ✨ Features
 
-Notes:
+- 🎯 Modern Angular 20 application
+- 📱 Responsive UI with Bootstrap 5
+- 🔎 Movie discovery: search, filter by genre/category
+- 📰 Detailed movie pages
+- 🔐 User accounts:
+  - 👤 Registration (sign‑up)
+  - 🔑 Authentication (login/logout)
+  - 🧭 Session‑aware UI (show/hide actions based on auth state)
+- 🛠️ Authenticated movie management:
+  - ➕ Add new movies
+  - ✏️ Edit existing movies
+  - 🗑️ Delete movies
+  - 🔒 Protected routes backed by an Angular AuthGuard (only authenticated users can access create/edit/delete)
+- 🧭 Client‑side routing (Angular Router)
+- ✅ Forms with validation (Angular Forms)
+- 🔔 Toast notifications (ngx‑toastr)
+- ⚡ Reactive flows (RxJS)
+- 🚀 Production‑ready builds
 
-- Exact feature availability depends on the backend endpoints you enable and configure. See the API repo for details.
+Note: Feature availability depends on the backend endpoints you enable. See the API repository for details.
 
-## Tech Stack
+---
+
+## 🧰 Tech Stack
 
 - Angular: 20.2.x
-- TypeScript: 5.9.x
-- RxJS: 7.8.x
-- Angular Router, Forms, Common, Animations
-- Bootstrap: 5.3.x and Bootstrap Icons
-- ngx‑toastr: 19.x (https://www.npmjs.com/package/ngx-toastr)
-- Zone.js
-- Build tooling via @angular/cli and @angular/build
+- TypeScript: 5.9.2
+- RxJS: 7.8.0
+- Angular packages: @angular/core, router, forms, common, animations
+- Styles: Bootstrap 5.3.8 + Bootstrap Icons 1.13.1
+- Notifications: ngx‑toastr 19.0.0
+- Zone.js: 0.15.0
+- Tooling: @angular/cli 20.2.2, @angular/build
+- Testing: Karma + Jasmine
+- Package manager: npm
 
-Package manager: npm
+---
 
-## Prerequisites
+## 🏗️ Architecture
 
-- Node.js: 20.x (recommended by Angular 20) or newer
+- Front‑end: Angular SPA (served at build time by any static server)
+- Back‑end: Node.js + Express.js REST API
+- Database: MySQL
+- Communication: HTTP via REST (configure base URL in environment files)
+
+---
+
+## ✅ Prerequisites
+
+- Node.js: 20.x or newer (recommended for Angular 20)
 - npm: 10.x or newer
-- Angular CLI: 20.2.2 (install globally or use npx)
-
-Install Angular CLI globally (optional):
+- Angular CLI (optional global install): 20.2.2
 ```
 
 bash
 npm install -g @angular/cli@20.2.2
 
 ```
-## Getting Started
+---
+
+## 🚀 Getting Started
 
 1) Clone this front‑end repository
 ```
@@ -91,12 +114,7 @@ bash
 npm install
 
 ```
-3) Set up and run the backend API
-
-Follow the instructions in the API repository:
-https://github.com/zaher-abbas/cinezone_api_express
-
-Example (local development):
+3) Start the backend API (local)
 ```
 
 bash
@@ -106,34 +124,34 @@ npm install
 npm start
 
 ```
-Make note of the API base URL once it’s running (e.g., http://localhost:3000).
+- Note the API base URL once running (e.g., http://localhost:3000).
 
-4) Configure the front‑end environment to point to your API (see Configuration below).
+4) Configure the front‑end API URL (see “Configuration” below)
 
-5) Start the dev server
+5) Run the dev server
 ```
 
 bash
 npx ng serve
 
-# or if you installed the CLI globally:
+# or (if CLI installed globally)
 
 ng serve
 
 ```
-By default the app is served at http://localhost:4200
+- App will be available at: http://localhost:4200
 
-## Configuration (Environment)
+---
 
-Set the API base URL in your Angular environment files:
+## 🛠️ Configuration (Environment)
+
+Set your API base URL in Angular environment files:
 
 - src/environments/environment.ts (development)
 - src/environments/environment.prod.ts (production)
-
-Example:
 ```
 
-ts
+typescript
 // src/environments/environment.ts
 export const environment = {
 production: false,
@@ -144,7 +162,7 @@ apiBaseUrl: 'http://localhost:3000/api' // Update to your local API URL
 
 ```
 
-ts
+typescript
 // src/environments/environment.prod.ts
 export const environment = {
 production: true,
@@ -152,82 +170,62 @@ apiBaseUrl: 'https://<YOUR_PRODUCTION_API_HOST>/api' // Update for production
 };
 
 ```
-Replace placeholders with your actual values. Avoid committing secrets to the repository.
+Tips:
+- Do not commit secrets.
+- Use placeholders for any private values.
 
-## Development
+---
 
-Run a local development server with live reload:
+## 🔐 Authentication & Route Protection
+
+CineZone supports user registration and authentication and restricts movie management features to authenticated users.
+
+- Registration: Users can create an account (name, email, password).
+- Login/Logout: Sessions are established with the API; the UI updates to reflect the current user.
+- Session handling: API calls can be made with credentials when needed.
+- Protected actions and routes:
+  - Add a movie (e.g., /movies/new)
+  - Edit a movie (e.g., /movies/:id/edit)
+  - Delete a movie
+- AuthGuard:
+  - An Angular route guard ensures only authenticated users can access protected routes.
+  - Unauthenticated users attempting to access protected pages are redirected to the login page.
+
+Backend note:
+- If you rely on cookies for sessions, ensure the API is configured with proper CORS headers and allow‑credentials. The front‑end can send credentials where appropriate.
+
+---
+
+## 🧑‍💻 Development
+
+- Start dev server with live reload:
 ```
 
 bash
 npx ng serve
 
 ```
-Build and watch during development:
+- Lint (if configured):
 ```
 
 bash
-npx ng build --watch
+npx ng lint
 
 ```
-Generate components/services/modules with schematics:
-```
-
-bash
-npx ng generate component <feature/your-component-name>
-npx ng generate service <core/your-service-name>
-npx ng generate module <feature/your-module-name> --route <route> --module app
-
-```
-## Build and Deployment
-
-Create an optimized production build:
+- Format (if you use Prettier):
 ```
 
 bash
-npx ng build --configuration=production
+npx prettier --write .
 
 ```
-The output will be generated under dist/ and can be deployed to any static host (e.g., Nginx, Apache, cloud storage with CDN).
+---
 
-Typical static hosting steps:
-- Upload the contents of dist/<project-name>/ to your hosting provider
-- Configure SPA fallback to index.html for client‑side routes
+## 🔁 API Proxy (Dev, optional)
 
-Example Nginx snippet (conceptual):
-```
+To avoid CORS during local development, you can use Angular’s proxy:
 
-nginx
-location / {
-try_files $uri $uri/ /index.html;
-}
-
-```
-Ensure environment.prod.ts points to your production API base URL before building.
-
-## Testing
-
-Run unit tests with Karma + Jasmine:
-```
-
-bash
-npx ng test
-
-```
-Generate coverage:
-```
-
-bash
-npx ng test --code-coverage
-
-```
-Coverage reports are typically emitted to coverage/.
-
-## Optional: Local API proxy for dev
-
-To avoid CORS and keep code using relative paths (e.g., /api), you can use Angular’s dev‑server proxy.
-
-1) Create proxy.conf.json at the project root:
+1) Create a proxy config file:
 ```
 
 json
@@ -241,42 +239,141 @@ json
 }
 
 ```
-2) Update your serve command to use the proxy:
+2) Start dev server with proxy:
 ```
 
 bash
 npx ng serve --proxy-config proxy.conf.json
 
 ```
-3) In your app services, call /api/... instead of an absolute URL. For production, still set environment.apiBaseUrl accordingly.
+With this, your front‑end can call /api/... directly while Angular forwards requests to the backend. If your API uses cookies for authentication, the proxy approach helps keep calls same‑origin from the browser’s perspective.
 
-## Troubleshooting
+---
 
-- Dev server runs but API calls fail:
-  - Verify backend is running and reachable at the configured apiBaseUrl.
-  - If running locally, ensure the Node server is started with:
-    ```bash
-    npm start
-    ```
-  - Check CORS settings on the backend if calling it directly from the browser.
-  - If using a proxy, confirm proxy.conf.json path and target.
+## 🧪 Testing
 
-- Angular CLI version mismatch:
-  - Use npx ng ... to avoid global version conflicts, or install the matching CLI globally.
+- Run unit tests in watch mode:
+```
 
-- 404s on page refresh in production:
-  - Ensure your host rewrites unknown routes to index.html (SPA fallback).
+bash
+npx ng test
 
-- Styles or icons not loading:
-  - Confirm Bootstrap and Bootstrap Icons are included and paths are correct.
+```
+- Run unit tests once (CI):
+```
 
-## Contributing
+bash
+npx ng test --watch=false
 
-- Open issues or feature requests in your repository.
-- Use conventional commit messages if a standard is defined in your project.
-- For larger changes, discuss via an issue before opening a PR.
+```
+Coverage (if enabled in karma.conf):
+```
 
-## License
+bash
+npx ng test --code-coverage
 
-Add your project’s license information here (e.g., MIT). If unspecified, consider including a LICENSE file and referencing it in this section.
+```
+---
+
+## 📦 Build & Deployment
+
+- Production build:
+```
+
+bash
+npx ng build --configuration production
+
+# or
+
+npx ng build --prod
+
+```
+- Output directory:
+```
+
+text
+dist/<YOUR_PROJECT_NAME>/
+
+```
+You can deploy the build output to any static host:
+
+- Static servers (Nginx/Apache)
+- Cloud (Vercel, Netlify, Firebase Hosting)
+- GitHub Pages (ensure SPA fallback)
+
+SPA routing note:
+- Configure a fallback to index.html for unknown routes to avoid 404s on browser refresh.
+
+Base href:
+- If deploying under a sub‑path, set the base href:
+```
+
+bash
+npx ng build --prod --base-href /your-sub-path/
+
+```
+---
+
+## 🗂️ Project Structure (typical)
+```
+
+text
+src/
+app/
+... Angular components/services/modules ...
+assets/
+environments/
+environment.ts
+environment.prod.ts
+index.html
+main.ts
+styles.scss
+
+```
+---
+
+## 🧩 Troubleshooting
+
+- Port already in use (4200):
+  - Change port: `npx ng serve --port 4201`
+
+- CORS errors:
+  - Use the proxy config (see above), or configure CORS on the backend.
+  - If using cookies/sessions, ensure credentials and allowed origins are properly set on the API.
+
+- API not reachable:
+  - Verify apiBaseUrl in environment files.
+  - Confirm the backend is running and accessible.
+
+- 404 on page refresh:
+  - Configure your hosting to redirect all routes to index.html (SPA fallback).
+
+- Node/npm version mismatch:
+  - Use Node 20+ and npm 10+, then reinstall dependencies: `rm -rf node_modules package-lock.json && npm install`
+
+---
+
+## 🤝 Contributing
+
+- Fork the repo and create a feature branch: `git checkout -b feat/awesome`
+- Commit with clear messages
+- Open a Pull Request with a concise description and screenshots (if applicable)
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.  
+Please update this section if your repository uses a different license.
+
+---
+
+## 🙌 Acknowledgements
+
+- Angular Team
+- ngx‑toastr
+- Bootstrap & Bootstrap Icons
+- The CineZone API project maintainers
+
+Happy hacking! 🍿
 ```
