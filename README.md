@@ -67,7 +67,7 @@ See the API repository for details.
 - TypeScript: 5.9.2
 - RxJS: 7.8.0
 - Angular packages: @angular/core, router, forms, common, animations
-- Styles: Bootstrap 5.3.8 + Bootstrap Icons 1.13.1 (installed with npm, and imported in styles.css & main.ts 'for the js')
+- Styles: Bootstrap 5.3.8 + Bootstrap Icons 1.13.1 (installed with npm, and imported in styles.css & main.ts)
 - Notifications: ngx‑toastr 19.0.0 — https://www.npmjs.com/package/ngx-toastr
 - Zone.js: 0.15.0
 - Tooling: @angular/cli 20.2.2, @angular/build
