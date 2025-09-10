@@ -8,3 +8,4 @@ header, .navbar {
   position: relative;
   z-index: 1050; /* higher than typical content */
 }
+

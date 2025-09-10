@@ -15,13 +15,12 @@
              data-bs-toggle="dropdown" aria-expanded="false">
             Movies
           </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" routerLink="/movies">Movies Catalogue</a>
-
-
+          <ul class="dropdown-menu bg-dark text-white">
+            <li><a class="dropdown-item bg-dark text-white" routerLink="/movies">Movies
+              Catalogue</a>
               @if (currentUser()) {
                 <li>
-                  <a class="dropdown-item" routerLink="/movies/add">Add Movie</a>
+                  <a class="dropdown-item bg-dark text-white" routerLink="/movies/add">Add Movie</a>
                 </li>
               }
           </ul>
@@ -31,9 +30,9 @@
              data-bs-toggle="dropdown" aria-expanded="false">
             Categories
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu bg-dark text-white">
             @for (category of categories; track category.id) {
-              <li><a class="dropdown-item"
+              <li><a class="dropdown-item bg-dark text-white"
                      [routerLink]="['/', 'categories', category.id, 'movies']">{{ category.name }}</a></li>
             }
           </ul>
