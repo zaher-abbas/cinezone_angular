@@ -12,8 +12,6 @@ import {AuthService} from '../../services/auth-service';
 })
 export class Home {
 
-  username: string = '';
   currentUser = inject(AuthService).currentUser;
-  
 
 }
