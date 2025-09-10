@@ -7,6 +7,8 @@ import {Moviedetails} from './components/moviedetails/moviedetails';
 import {Profile} from './components/profile/profile';
 import {CategoryMovies} from './components/category-movies/category-movies.component';
 import {MoviesForm} from './components/movies-form/movies-form';
+import {authGuard} from './auth.guard';
+
 
 export const routes: Routes = [
   {
@@ -24,7 +26,7 @@ export const routes: Routes = [
   },
   {
     path: 'movies/add',
-    component: MoviesForm,
+    component: MoviesForm, canActivate: [authGuard]
   },
   {
     path: 'movies/:id',
@@ -44,7 +46,7 @@ export const routes: Routes = [
   },
   {
     path: 'profile',
-    component: Profile,
+    component: Profile, canActivate: [authGuard]
   },
   {
     path: '**',
