@@ -32,11 +32,11 @@ export class Login {
     this.authService.login(this.email, this.password).subscribe({
       next: () => {
         this.toastr.success('Login successful');
+
+        //We call the getUserProfile to get the user information and assign then to currentUser signal which is injected in the navbar
         this.authService.getUserProfile().subscribe({
           next: (user) => {
             this.authService.setCurrentUser(user);
-            localStorage.setItem('userName', user.name);
-            localStorage.setItem('email', user.email);
             this.router.navigate(['/home']);
           },
           error: (err: HttpErrorResponse) => console.log(err)

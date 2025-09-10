@@ -14,9 +14,6 @@ export class Home {
 
   username: string = '';
   currentUser = inject(AuthService).currentUser;
-
-  ngOnInit() {
-    this.username = localStorage.getItem('userName') ?? 'Guest';
-  }
+  
 
 }

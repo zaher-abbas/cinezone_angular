@@ -40,7 +40,6 @@ export class Navbar {
     this.authService.logout().subscribe({
       next: () => {
         console.log('logout successful');
-        localStorage.clear();
         this.currentUser.set(null);
         this.router.navigate(['/home']);
       },
