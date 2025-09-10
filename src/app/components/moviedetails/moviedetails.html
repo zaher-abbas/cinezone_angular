@@ -6,7 +6,9 @@
       </div>
       @if (currentUser()) {
         <div>
-          <a [routerLink]="['/', 'movies', movie.id, 'edit']" class="btn btn-info">Edit Movie</a>
+          <a [routerLink]="['/', 'movies', movie.id, 'edit']" class="btn btn-info p-2 me-2"
+             style="width: 4rem;">Edit</a>
+          <a (click)="deleteMovie(movie.id)" class="btn btn-danger p-2" style="width: 4rem;">Delete</a>
         </div>
       }
     </div>

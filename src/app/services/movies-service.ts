@@ -41,5 +41,11 @@ export class MoviesService {
       withCredentials: true
     });
   }
+
+  deleteMovie(id: number | undefined): Observable<void> {
+    return this.http.delete<void>(`${this.API_URL}/movies/${id}`, {
+      withCredentials: true
+    });
+  }
 }
 
