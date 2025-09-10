@@ -3,7 +3,6 @@ import {FormsModule} from '@angular/forms';
 import {AuthService} from '../../services/auth-service';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
-import {Navbar} from '../navbar/navbar';
 import {HttpErrorResponse} from '@angular/common/http';
 import {NgClass} from '@angular/common';
 
@@ -12,7 +11,6 @@ import {NgClass} from '@angular/common';
   selector: 'app-register',
   imports: [
     FormsModule,
-    Navbar,
     NgClass
   ],
   templateUrl: './register.html',

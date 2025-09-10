@@ -1,53 +1,55 @@
-<section class="container text-white my-4">
-  <h1 class="mb-4">Login</h1>
-  <form (ngSubmit)="myForm.valid && onSubmit()" #myForm="ngForm" class="p-3">
-    <div [ngClass]="errorMsg ? 'mb-4 alert alert-danger' : ''">{{ errorMsg }}</div>
-    <div class="mb-4">
-      <label for="email" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="email" required [(ngModel)]="email" name="email" ngModel
-             #emailInput="ngModel"
-             [email]="true"
-             maxlength="255"
-             placeholder="Enter your email"
-             [class.is-invalid]="emailInput.invalid && (emailInput.dirty || emailInput.touched)"
-             [class.is-valid]="emailInput.valid && (emailInput.dirty || emailInput.touched)">
-    </div>
-    @if (myForm.submitted && myForm.invalid && emailInput.errors && emailInput.errors["required"]) {
-      <div class="alert alert-danger">Email is required
+<section class="text-white my-4 h-100 d-flex align-items-center">
+  <div class="container">
+    <h1 class="mb-4 text-center">Login</h1>
+    <form (ngSubmit)="myForm.valid && onSubmit()" #myForm="ngForm" class="p-3">
+      <div [ngClass]="errorMsg ? 'mb-4 alert alert-danger' : ''">{{ errorMsg }}</div>
+      <div class="mb-4">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" required [(ngModel)]="email" name="email" ngModel
+               #emailInput="ngModel"
+               [email]="true"
+               maxlength="255"
+               placeholder="Enter your email"
+               [class.is-invalid]="emailInput.invalid && (emailInput.dirty || emailInput.touched)"
+               [class.is-valid]="emailInput.valid && (emailInput.dirty || emailInput.touched)">
       </div>
-    }
-    @if (myForm.submitted && myForm.invalid && emailInput.errors && emailInput.errors["email"]) {
-      <div class="alert alert-danger">Email is not valid
+      @if (myForm.submitted && myForm.invalid && emailInput.errors && emailInput.errors["required"]) {
+        <div class="alert alert-danger">Email is required
+        </div>
+      }
+      @if (myForm.submitted && myForm.invalid && emailInput.errors && emailInput.errors["email"]) {
+        <div class="alert alert-danger">Email is not valid
+        </div>
+      }
+      @if (myForm.submitted && myForm.invalid && emailInput.errors && emailInput.errors["maxlength"]) {
+        <div class="alert alert-danger">Email must be less than 255 characters
+        </div>
+      }
+      <div class="mb-4">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" required minlength="8" maxlength="255"
+               #passwordInput="ngModel"
+               [(ngModel)]="password" name="password"
+               placeholder="Enter your password"
+               [class.is-invalid]="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)"
+               [class.is-valid]="passwordInput.valid && (passwordInput.dirty || passwordInput.touched)"
+        >
       </div>
-    }
-    @if (myForm.submitted && myForm.invalid && emailInput.errors && emailInput.errors["maxlength"]) {
-      <div class="alert alert-danger">Email must be less than 255 characters
+      @if (myForm.submitted && myForm.invalid && emailInput.errors && emailInput.errors["required"]) {
+        <div class="alert alert-danger">Password is required
+        </div>
+      }
+      @if (myForm.submitted && myForm.invalid && passwordInput.errors && passwordInput.errors["minlength"]) {
+        <div class="alert alert-danger">Password must be at least 8 characters long
+        </div>
+      }
+      @if (myForm.submitted && myForm.invalid && passwordInput.errors && passwordInput.errors["maxLength"]) {
+        <div class="alert alert-danger">Password must be less than 255 characters
+        </div>
+      }
+      <div class="text-center">
+        <button type="submit" class="btn btn-success">Login</button>
       </div>
-    }
-    <div class="mb-4">
-      <label for="password" class="form-label">Password</label>
-      <input type="password" class="form-control" id="password" required minlength="8" maxlength="255"
-             #passwordInput="ngModel"
-             [(ngModel)]="password" name="password"
-             placeholder="Enter your password"
-             [class.is-invalid]="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)"
-             [class.is-valid]="passwordInput.valid && (passwordInput.dirty || passwordInput.touched)"
-      >
-    </div>
-    @if (myForm.submitted && myForm.invalid && emailInput.errors && emailInput.errors["required"]) {
-      <div class="alert alert-danger">Password is required
-      </div>
-    }
-    @if (myForm.submitted && myForm.invalid && passwordInput.errors && passwordInput.errors["minlength"]) {
-      <div class="alert alert-danger">Password must be at least 8 characters long
-      </div>
-    }
-    @if (myForm.submitted && myForm.invalid && passwordInput.errors && passwordInput.errors["maxLength"]) {
-      <div class="alert alert-danger">Password must be less than 255 characters
-      </div>
-    }
-    <div class="text-center">
-      <button type="submit" class="btn btn-success">Login</button>
-    </div>
-  </form>
+    </form>
+  </div>
 </section>

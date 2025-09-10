@@ -6,6 +6,7 @@ import {Login} from './components/login/login';
 import {Moviedetails} from './components/moviedetails/moviedetails';
 import {Profile} from './components/profile/profile';
 import {CategoryMovies} from './components/category-movies/category-movies.component';
+import {MoviesForm} from './components/movies-form/movies-form';
 
 export const routes: Routes = [
   {
@@ -20,6 +21,10 @@ export const routes: Routes = [
   {
     path: 'movies',
     component: MoviesList
+  },
+  {
+    path: 'movies/add',
+    component: MoviesForm,
   },
   {
     path: 'movies/:id',

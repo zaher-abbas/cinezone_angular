@@ -7,15 +7,28 @@
     </button>
     <div class="collapse navbar-collapse" id="collapseMenu">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link fs-4 text-white btn btn-primary me-3" aria-current="page" routerLink="/home">Home</a>
+        <li class="nav-item me-3">
+          <a class="nav-link fs-4 text-white btn btn-primary" aria-current="page" routerLink="/home">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link fs-4 text-white btn btn-primary me-3" routerLink="/movies">Movies</a>
-        </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown me-3">
           <a class="nav-link dropdown-toggle fs-4 text-white btn btn-primary" role="button"
-             data-bs-toggle="dropdown" aria-expanded="true">
+             data-bs-toggle="dropdown" aria-expanded="false">
+            Movies
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/movies">Movies Catalogue</a>
+
+
+              @if (currentUser()) {
+                <li>
+                  <a class="dropdown-item" routerLink="/movies/add">Add Movie</a>
+                </li>
+              }
+          </ul>
+        </li>
+        <li class="nav-item dropdown me-3">
+          <a class="nav-link dropdown-toggle fs-4 text-white btn btn-primary" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false">
             Categories
           </a>
           <ul class="dropdown-menu">
@@ -26,25 +39,24 @@
           </ul>
         </li>
       </ul>
-      <li>
-        <ul class="navbar-nav mb-2 mb-lg-0">
-          @if (currentUser(); as user) {
-            <li class="nav-item"><a class="nav-link fs-4 text-white btn btn-primary rounded me-3"
-                                    routerLink="/profile"><i
-              class="bi bi-person-fill text-success"></i> {{ user.name }}</a>
-            </li>
-            <li class="nav-item"><a class="nav-link fs-4 btn btn-danger rounded text-white"
-                                    (click)="logout()">Log-Out</a>
-            </li>
-          } @else {
-            <li class="nav-item"><a class="nav-link fs-4 btn btn-primary me-3 text-white rounded"
-                                    routerLink="/register">Register</a>
-            </li>
-            <li class="nav-item"><a class="nav-link fs-4 btn btn-primary text-white rounded"
-                                    routerLink="/login">Login</a>
-            </li>
-          }
-        </ul>
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        @if (currentUser(); as user) {
+          <li class="nav-item"><a class="nav-link fs-4 text-white btn btn-primary rounded me-3"
+                                  routerLink="/profile"><i
+            class="bi bi-person-fill text-success"></i> {{ user.name }}</a>
+          </li>
+          <li class="nav-item"><a class="nav-link fs-4 btn btn-danger rounded text-white"
+                                  (click)="logout()">Log-Out</a>
+          </li>
+        } @else {
+          <li class="nav-item"><a class="nav-link fs-4 btn btn-primary me-3 text-white rounded"
+                                  routerLink="/register">Register</a>
+          </li>
+          <li class="nav-item"><a class="nav-link fs-4 btn btn-primary text-white rounded"
+                                  routerLink="/login">Login</a>
+          </li>
+        }
+      </ul>
     </div>
   </div>
 </nav>

@@ -1,12 +1,11 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {RouterLink} from '@angular/router';
-import {Navbar} from '../navbar/navbar';
+import {AuthService} from '../../services/auth-service';
 
 @Component({
   selector: 'app-home',
   imports: [
     RouterLink,
-    Navbar
   ],
   templateUrl: './home.html',
   styleUrl: './home.css'
@@ -14,6 +13,7 @@ import {Navbar} from '../navbar/navbar';
 export class Home {
 
   username: string = '';
+  currentUser = inject(AuthService).currentUser;
 
   ngOnInit() {
     this.username = localStorage.getItem('userName') ?? 'Guest';

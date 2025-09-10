@@ -1,8 +1,15 @@
+<!--Hero banner!-->
 <section class="bg-dark text-white py-5 h-100 d-flex align-items-center">
   <div class="container d-flex align-items-center">
     <div class="row w-100">
       <div class="col-lg-8 mx-auto text-center">
-        <h3 class="fw-bold mb-4">Welcome <span class="text-primary">{{ username }}</span> to</h3>
+        <h3 class="fw-bold mb-4">Welcome <span class="text-primary">
+          @if (currentUser(); as user) {
+            {{ user.name }}
+          } @else {
+            Guest
+          }
+        </span> to</h3>
         <h1 class="display-3 fw-bold mb-5">
           📽 Cine<span class="text-primary">Zone</span>
         </h1>

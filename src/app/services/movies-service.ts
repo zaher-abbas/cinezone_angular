@@ -30,5 +30,10 @@ export class MoviesService {
     return this.http.get<Category[]>(this.API_URL + '/categories');
   }
 
+  addMovie(movie: Movie): Observable<Movie> {
+    return this.http.post<Movie>(`${this.API_URL}/movies`, movie, {
+      withCredentials: true
+    });
+  }
 }
 

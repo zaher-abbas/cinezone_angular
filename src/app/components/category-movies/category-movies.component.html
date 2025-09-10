@@ -1,23 +1,25 @@
-<section class="container my-3">
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 text-white">
-    @for (movie of movies; track movie.id) {
-      <div class="col">
-        <div class="card p-3 h-100">
-          <div class="card-header fw-medium fs-5 text-start btn btn-primary"
-               [routerLink]="['/', 'categories', movie.category_id, 'movies']"> {{ movie.category }}
-          </div>
-          <!-- <img src="..." class="card-img-top" alt="..."> !-->
-          <div class="card-body text-center">
-            <h3 class="movie-title card-title mb-4">🎞 {{ movie.title }}</h3>
-            <p class="card-text mb-5"><span class="fw-bold">Released in:</span> {{ movie.release_year }}</p>
-            <div class="text-center">
-              <a [routerLink]="['/movies', movie.id]" class="btn btn-success">See more</a>
+<section class="d-flex align-items-center h-100 my-3">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 text-white">
+      @for (movie of movies; track movie.id) {
+        <div class="col">
+          <div class="card p-3 h-100">
+            <div class="card-header fw-medium fs-5 text-start btn btn-primary"
+                 [routerLink]="['/', 'categories', movie.category_id, 'movies']"> {{ movie.category }}
+            </div>
+            <!-- <img src="..." class="card-img-top" alt="..."> !-->
+            <div class="card-body text-center">
+              <h3 class="movie-title card-title mb-4">🎞 {{ movie.title }}</h3>
+              <p class="card-text mb-5"><span class="fw-bold">Released in:</span> {{ movie.release_year }}</p>
+              <div class="text-center">
+                <a [routerLink]="['/movies', movie.id]" class="btn btn-success">See more</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    } @empty {
-      <p>No movies</p>
-    }
+      } @empty {
+        <p>No movies</p>
+      }
+    </div>
   </div>
 </section>
