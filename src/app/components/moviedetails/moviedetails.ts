@@ -2,13 +2,11 @@ import {Component} from '@angular/core';
 import {ActivatedRoute, ParamMap, RouterLink} from '@angular/router';
 import {MoviesService} from '../../services/movies-service';
 import {Movie} from '../../Interface/Movie';
-import {Navbar} from '../navbar/navbar';
 
 @Component({
   selector: 'app-moviedetails',
   imports: [
     RouterLink,
-    Navbar
   ],
   templateUrl: './moviedetails.html',
   styleUrl: './moviedetails.css'

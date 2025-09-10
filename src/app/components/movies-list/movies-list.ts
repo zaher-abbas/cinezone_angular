@@ -1,16 +1,12 @@
-import {Component, inject} from '@angular/core';
+import {Component} from '@angular/core';
 import {Movie} from '../../Interface/Movie';
 import {MoviesService} from '../../services/movies-service';
-import {DatePipe} from '@angular/common';
-import {Router, RouterLink} from '@angular/router';
-import {Navbar} from '../navbar/navbar';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-movies-list',
   imports: [
-    DatePipe,
     RouterLink,
-    Navbar
   ],
   templateUrl: './movies-list.html',
   styleUrl: './movies-list.css'
@@ -18,7 +14,6 @@ import {Navbar} from '../navbar/navbar';
 export class MoviesList {
 
   movies!: Movie[];
-  route: Router = inject(Router);
 
   constructor(private moviesService: MoviesService) {
   }

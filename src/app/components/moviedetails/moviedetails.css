@@ -13,3 +13,27 @@
   font-weight: 700;
   color: #fff;
 }
+
+.card-body {
+  place-items: center;
+}
+
+.info-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.info-container > div {
+  width: 35%;
+}
+
+.rating {
+  background: linear-gradient(45deg, #f39c12, #e67e22);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.9em;
+}
