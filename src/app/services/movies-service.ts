@@ -35,5 +35,11 @@ export class MoviesService {
       withCredentials: true
     });
   }
+
+  editMovie(id: number, movie: Movie): Observable<Movie> {
+    return this.http.put<Movie>(`${this.API_URL}/movies/${id}`, movie, {
+      withCredentials: true
+    });
+  }
 }
 

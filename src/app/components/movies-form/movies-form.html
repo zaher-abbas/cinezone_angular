@@ -1,6 +1,10 @@
 <section class="text-white my-4 h-100 d-flex align-items-center">
   <div class="container">
-    <h1 class="mb-4 text-center">Add New Movie 🎞</h1>
+    @if (!id) {
+      <h1 class="mb-4 text-center">Add New Movie 🎞</h1>
+    } @else {
+      <h1 class="mb-4 text-center">Edit Movie 🎞</h1>
+    }
     <form (ngSubmit)="myForm.valid && onSubmit()" #myForm="ngForm" class="p-3">
       <div [ngClass]="serverErrorMessage ? 'mb-4 alert alert-danger' : ''">{{ serverErrorMessage }}</div>
       <div class="mb-4">
@@ -99,10 +103,15 @@
         <div class="alert alert-danger">Category is required
         </div>
       }
-
-      <div class="text-center">
-        <button type="submit" class="btn btn-success">Add Movie</button>
-      </div>
+      @if (!id) {
+        <div class="text-center">
+          <button type="submit" class="btn btn-success">Add Movie</button>
+        </div>
+      } @else {
+        <div class="text-center">
+          <button type="submit" class="btn btn-success">Edit Movie</button>
+        </div>
+      }
     </form>
   </div>
 </section>

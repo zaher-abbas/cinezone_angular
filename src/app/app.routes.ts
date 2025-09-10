@@ -29,6 +29,10 @@ export const routes: Routes = [
     component: MoviesForm, canActivate: [authGuard]
   },
   {
+    path: 'movies/:id/edit',
+    component: MoviesForm, canActivate: [authGuard]
+  },
+  {
     path: 'movies/:id',
     component: Moviedetails
   },

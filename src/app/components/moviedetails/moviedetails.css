@@ -3,7 +3,7 @@
   color: white;
 }
 
-.card-header {
+.card-header, .card-footer {
   background: linear-gradient(135deg, #3d2b7a 0%, #1db5a6 100%);
 }
 

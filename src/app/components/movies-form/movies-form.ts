@@ -6,7 +6,7 @@ import {Movie} from '../../Interface/Movie';
 import {Category} from '../../Interface/Category';
 import {HttpErrorResponse} from '@angular/common/http';
 import {ToastrService} from 'ngx-toastr';
-import {Router} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 
 @Component({
   selector: 'app-movies-form',
@@ -24,16 +24,34 @@ export class MoviesForm {
   release_year!: number;
   rating!: number;
   category_id!: number;
+
   categories!: Category[];
+
   router: Router = inject(Router);
+  id!: number;
+  newMovie!: Movie;
 
   serverErrorMessage: string = '';
   currentYear = new Date().getFullYear();
 
-  constructor(private moviesService: MoviesService, private toster: ToastrService) {
+  constructor(private moviesService: MoviesService, private route: ActivatedRoute, private toster: ToastrService) {
   }
 
   ngOnInit() {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.id = Number(params.get('id'));
+    });
+    if (this.id) {
+      this.moviesService.getMovieDetails(this.id).subscribe({
+        next: (movie) => {
+          this.title = movie.title;
+          this.director = movie.director;
+          this.release_year = movie.release_year;
+          this.rating = movie.rating;
+          this.category_id = movie.category_id;
+        },
+      })
+    }
     this.moviesService.getCategories().subscribe({
       next: (categories) => {
         this.categories = categories;
@@ -43,17 +61,40 @@ export class MoviesForm {
   }
 
   onSubmit() {
-    const movie: Movie = {
+    this.newMovie = {
       title: this.title,
       director: this.director,
       rating: this.rating,
       release_year: this.release_year,
       category_id: this.category_id
     }
-    this.moviesService.addMovie(movie).subscribe({
+    if (this.id) {
+      this.editMovie();
+    } else {
+      this.addMovie();
+    }
+
+  }
+
+  addMovie() {
+    this.moviesService.addMovie(this.newMovie).subscribe({
       next: () => {
         console.log('Movie added successfully');
         this.toster.success('Movie added successfully');
+        this.router.navigate(['/movies']);
+
+      },
+      error: (err: HttpErrorResponse) => {
+        this.serverErrorMessage = err.error.message;
+      }
+    })
+  }
+
+  editMovie() {
+    this.moviesService.editMovie(this.id, this.newMovie).subscribe({
+      next: () => {
+        console.log('Movie Edited successfully');
+        this.toster.success('Movie Edited successfully');
         this.router.navigate(['/movies']);
 
       },
