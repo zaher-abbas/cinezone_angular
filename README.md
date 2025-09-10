@@ -1,7 +1,8 @@
 ```markdown
 # 🎬 CineZone App — Angular Front‑End
 
-CineZone is a sleek and responsive front‑end built with Angular for discovering and managing movies. It connects to a Node.js + Express.js backend with a MySQL database.
+CineZone is a sleek and responsive front‑end built with Angular for discovering and managing movies.
+It connects to a Node.js + Express.js backend with a MySQL database.
 
 🔗 Backend API repository:  
 https://github.com/zaher-abbas/cinezone_api_express
@@ -52,11 +53,12 @@ CineZone delivers a modern movie browsing experience, featuring fast client‑si
   - 🔒 Protected routes backed by an Angular AuthGuard (only authenticated users can access create/edit/delete)
 - 🧭 Client‑side routing (Angular Router)
 - ✅ Forms with validation (Angular Forms)
-- 🔔 Toast notifications (ngx‑toastr)
+- 🔔 Toast notifications (ngx‑toastr) — https://www.npmjs.com/package/ngx-toastr
 - ⚡ Reactive flows (RxJS)
 - 🚀 Production‑ready builds
 
-Note: Feature availability depends on the backend endpoints you enable. See the API repository for details.
+Note: Feature availability depends on the backend endpoints you enable.
+See the API repository for details.
 
 ---
 
@@ -66,8 +68,8 @@ Note: Feature availability depends on the backend endpoints you enable. See the 
 - TypeScript: 5.9.2
 - RxJS: 7.8.0
 - Angular packages: @angular/core, router, forms, common, animations
-- Styles: Bootstrap 5.3.8 + Bootstrap Icons 1.13.1
-- Notifications: ngx‑toastr 19.0.0
+- Styles: Bootstrap 5.3.8 + Bootstrap Icons 1.13.1 (installed with npm, and imported in styles.css & main.ts 'for the js')
+- Notifications: ngx‑toastr 19.0.0 — https://www.npmjs.com/package/ngx-toastr
 - Zone.js: 0.15.0
 - Tooling: @angular/cli 20.2.2, @angular/build
 - Testing: Karma + Jasmine
@@ -87,7 +89,7 @@ Note: Feature availability depends on the backend endpoints you enable. See the 
 ## ✅ Prerequisites
 
 - Node.js: 20.x or newer (recommended for Angular 20)
-- npm: 10.x or newer
+- npm: 10.x or newer (bundled with Node.js)
 - Angular CLI (optional global install): 20.2.2
 ```
 
@@ -103,8 +105,8 @@ npm install -g @angular/cli@20.2.2
 ```
 
 bash
-git clone <YOUR_FRONTEND_REPO_URL>
-cd <YOUR_FRONTEND_REPO_FOLDER>
+git clone https://github.com/zaher-abbas/cinezone_angular.git
+cd cinezone_angular
 
 ```
 2) Install dependencies
@@ -117,11 +119,11 @@ npm install
 3) Start the backend API (local)
 ```
 
-bash
-git clone https://github.com/zaher-abbas/cinezone_api_express.git
-cd cinezone_api_express
-npm install
-npm start
+bash <br>
+git clone https://github.com/zaher-abbas/cinezone_api_express.git <br>
+cd cinezone_api_express <br>
+npm install <br>
+🚀 npm start
 
 ```
 - Note the API base URL once running (e.g., http://localhost:3000).
@@ -181,8 +183,10 @@ Tips:
 CineZone supports user registration and authentication and restricts movie management features to authenticated users.
 
 - Registration: Users can create an account (name, email, password).
-- Login/Logout: Sessions are established with the API; the UI updates to reflect the current user.
-- Session handling: API calls can be made with credentials when needed.
+- Login/Logout: Sessions are established with the API (JWT is created by the server, and stored in a HttpOnly cookie); 
+- The UI updates to reflect the current user.
+- Session handling: API calls can be made with credentials when needed (Setting credentials/withCredentials in Angular makes the browser include your HttpOnly JWT cookie with the request,
+  and accept Set-Cookie responses), enabling the Node API to authenticate the user via that cookie)
 - Protected actions and routes:
   - Add a movie (e.g., /movies/new)
   - Edit a movie (e.g., /movies/:id/edit)
@@ -225,7 +229,7 @@ npx prettier --write .
 
 To avoid CORS during local development, you can use Angular’s proxy:
 
-1) Create a proxy config file:
+1) Create a proxy config file (e.g., proxy.conf.json):
 ```
 
 json
@@ -291,7 +295,7 @@ npx ng build --prod
 - Output directory:
 ```
 
-text
+plaintext
 dist/<YOUR_PROJECT_NAME>/
 
 ```
@@ -317,7 +321,7 @@ npx ng build --prod --base-href /your-sub-path/
 ## 🗂️ Project Structure (typical)
 ```
 
-text
+plaintext
 src/
 app/
 ... Angular components/services/modules ...
@@ -371,7 +375,7 @@ Please update this section if your repository uses a different license.
 ## 🙌 Acknowledgements
 
 - Angular Team
-- ngx‑toastr
+- ngx‑toastr — https://www.npmjs.com/package/ngx-toastr
 - Bootstrap & Bootstrap Icons
 - The CineZone API project maintainers
 
