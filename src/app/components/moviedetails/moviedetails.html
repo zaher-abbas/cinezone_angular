@@ -16,19 +16,19 @@
       <p class="movie-title card-title mb-4">🎞 {{ movie.title }}</p>
       <div class="mb-3 info-container bg-info-subtle text-dark p-2 rounded-3">
         <div class="h5 text-start">Genre:</div>
-        <div class="fs-5">{{ movie.category }}</div>
+        <div class="fs-5 p-2">{{ movie.category }}</div>
       </div>
       <div class="card-text mb-4 info-container bg-info-subtle text-dark p-2 rounded-3">
         <div class="h5 text-start">Director:</div>
-        <div class="fs-5">👤 {{ movie.director }}</div>
+        <div class="fs-5 p-2">👤 {{ movie.director }}</div>
       </div>
       <div class="card-text mb-3 info-container bg-info-subtle text-dark p-2 rounded-3">
         <div class="h5 text-start">Release Year:</div>
-        <div class="fs-5">{{ movie.release_year }}</div>
+        <div class="fs-5 p-2">{{ movie.release_year }}</div>
       </div>
       <div class="card-text mb-4 info-container bg-info-subtle text-dark p-2 rounded-3">
         <div class="h5 text-start">Rating:</div>
-        <div class="fs-5 rating">⭐{{ movie.rating }}/10</div>
+        <div class="fs-5 p-2 rating">⭐{{ movie.rating }}/10</div>
       </div>
       <a routerLink="/movies" class="btn btn-danger">Back to Catalogue</a>
     </div>

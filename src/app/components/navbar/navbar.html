@@ -38,6 +38,12 @@
         </li>
       </ul>
       <ul class="navbar-nav mb-2 mb-lg-0">
+        <form (ngSubmit)="onSearch()" class="d-flex" role="search">
+          <input name="search" [(ngModel)]="searchInput" class="form-control me-2" type="search"
+                 placeholder="Search a movie"
+                 aria-label="Search"/>
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
         @if (currentUser(); as user) {
           <li class="nav-item"><a class="nav-link fs-4 text-white btn btn-primary rounded me-3"
                                   routerLink="/profile"><i
