@@ -16,6 +16,7 @@ export class CategoryMovies {
 
   id!: number;
   movies!: Movie[];
+  loading: boolean = true;
 
   constructor(private moviesService: MoviesService, private route: ActivatedRoute) {
   }
@@ -27,8 +28,14 @@ export class CategoryMovies {
         distinctUntilChanged(), // only refetch when id actually changes
         switchMap((id: number) => this.moviesService.getMoviesByCategory(id))
       ).subscribe({
-      next: (movies) => (this.movies = movies),
-      error: (err) => console.error(err)
+      next: (movies) => {
+        this.movies = movies;
+        this.loading = false;
+      },
+      error: (err) => {
+        this.loading = false;
+        console.error(err)
+      }
     });
   }
 }

@@ -16,6 +16,7 @@ export class MoviesList {
 
   movies!: Movie[];
   searchTxt!: string;
+  loading: boolean = true;
 
   constructor(private moviesService: MoviesService, private route: ActivatedRoute) {
   }
@@ -38,11 +39,15 @@ export class MoviesList {
     )
       .subscribe({
         next: (movies) => {
+          this.loading = false;
           this.movies = movies;
           if (this.searchTxt)
             this.movies = this.movies.filter(movie => movie.title.toLowerCase().includes(this.searchTxt));
         },
-        error: (err) => console.error(err)
+        error: (err) => {
+          this.loading = false;
+          console.error(err)
+        }
       });
   }
 

@@ -18,7 +18,11 @@
           </div>
         </div>
       } @empty {
-        <p>No movies</p>
+        @if (loading) {
+          <h1 class="alert alert-info text-center">Loading movies...</h1>
+        } @else {
+          <h1 class="alert alert-info text-center">No movies !</h1>
+        }
       }
     </div>
   </div>
