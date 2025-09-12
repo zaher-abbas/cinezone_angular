@@ -38,11 +38,11 @@ export class Moviedetails {
   }
 
   deleteMovie(id: number | undefined): void {
-    if (confirm('Are you sure you want to delete this movie ?')) {
+    if (confirm('🛈 Are you sure you want to delete this movie ?')) {
       this.moviesService.deleteMovie(id).subscribe({
         next: () => {
-          console.log("Movie deleted successfully");
-          this.toastr.info("Movie deleted successfully");
+          console.log("deleted successfully");
+          this.toastr.info("🛈 Movie deleted successfully");
           this.router.navigate(['/movies']);
         }
       })

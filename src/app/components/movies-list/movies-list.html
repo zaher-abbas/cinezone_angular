@@ -6,14 +6,15 @@
         <div class="col">
           <div class="card p-3 h-100">
             <div class="card-header fw-medium fs-5 text-start btn btn-primary"
-                 [routerLink]="['/', 'categories', movie.category_id, 'movies']"> {{ movie.category }}
+                 [routerLink]="['/', 'categories', movie.category_id, 'movies']"><i class="bi bi-film"></i>
+              {{ movie.category }}
             </div>
             <!-- <img src="..." class="card-img-top" alt="..."> !-->
             <div class="card-body text-center">
               <h3 class="movie-title card-title mb-4">🎞 {{ movie.title }}</h3>
               <p class="card-text mb-4"><span class="fw-bold">Released in:</span> {{ movie.release_year }}</p>
               <div class="text-center">
-                <a [routerLink]="['/movies', movie.id]" class="btn btn-success">See more</a>
+                <a [routerLink]="['/movies', movie.id]" class="btn btn-success">See more 🔍</a>
               </div>
             </div>
           </div>

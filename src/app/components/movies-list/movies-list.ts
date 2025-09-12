@@ -43,6 +43,7 @@ export class MoviesList {
           this.movies = movies;
           if (this.searchTxt)
             this.movies = this.movies.filter(movie => movie.title.toLowerCase().includes(this.searchTxt));
+          
         },
         error: (err) => {
           this.loading = false;

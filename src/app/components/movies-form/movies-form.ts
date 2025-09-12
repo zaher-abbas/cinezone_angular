@@ -81,7 +81,7 @@ export class MoviesForm {
     this.moviesService.addMovie(this.newMovie).subscribe({
       next: () => {
         console.log('Movie added successfully');
-        this.toster.success('Movie added successfully');
+        this.toster.success('🛈 Movie added successfully');
         this.router.navigate(['/movies']);
 
       },
@@ -95,7 +95,7 @@ export class MoviesForm {
     this.moviesService.editMovie(this.id, this.newMovie).subscribe({
       next: () => {
         console.log('Movie Edited successfully');
-        this.toster.success('Movie Edited successfully');
+        this.toster.success('🛈 Movie Edited successfully');
         this.router.navigate(['/movies']);
 
       },
