@@ -109,7 +109,8 @@
         </div>
       } @else {
         <div class="text-center">
-          <button type="submit" class="btn btn-success">Edit Movie</button>
+          <button type="submit" class="btn btn-success me-3">Edit Movie</button>
+          <a [routerLink]="['/movies', id]" class="btn btn-danger">Back</a>
         </div>
       }
     </form>

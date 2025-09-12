@@ -6,13 +6,14 @@ import {Movie} from '../../Interface/Movie';
 import {Category} from '../../Interface/Category';
 import {HttpErrorResponse} from '@angular/common/http';
 import {ToastrService} from 'ngx-toastr';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router, RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-movies-form',
   imports: [
     FormsModule,
-    NgClass
+    NgClass,
+    RouterLink
   ],
   templateUrl: './movies-form.html',
   styleUrl: './movies-form.css'
