@@ -1,7 +1,7 @@
 <section class="text-white my-4 h-100 d-flex align-items-center">
   <div class="container">
     <h1 class="mb-4 text-center">Register New Account</h1>
-    <form (ngSubmit)="myForm.valid && onSubmit()" #myForm="ngForm" class="p-3">
+    <form (ngSubmit)="myForm.valid && onSubmit()" #myForm="ngForm" class="p-3 w-75 mx-auto">
       <div [ngClass]="errorMsg ? 'mb-4 alert alert-danger' : ''">{{ errorMsg }}</div>
       <div class="mb-4">
         <label for="username" class="form-label">Name</label>

@@ -6,7 +6,7 @@
     } @else {
       <h1 class="mb-4 text-center"><i class="bi bi-pencil"></i> Edit Movie</h1>
     }
-    <form (ngSubmit)="myForm.valid && onSubmit()" #myForm="ngForm" class="p-3">
+    <form (ngSubmit)="myForm.valid && onSubmit()" #myForm="ngForm" class="p-3 w-75 mx-auto">
       <div [ngClass]="serverErrorMessage ? 'mb-4 alert alert-danger' : ''">{{ serverErrorMessage }}</div>
       <div class="mb-4">
         <label for="title" class="form-label">Title</label>
