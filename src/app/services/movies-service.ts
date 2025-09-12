@@ -3,13 +3,14 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Movie} from '../Interface/Movie';
 import {Category} from '../Interface/Category';
+import {environment} from '../environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MoviesService {
 
-  API_URL = 'http://localhost:3000';
+  API_URL = environment.API_URL;
 
   constructor(private http: HttpClient) {
   }

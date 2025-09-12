@@ -37,17 +37,14 @@ export class Moviedetails {
 
   }
 
-  deleteMovie(id: number | undefined): void {
-    if (confirm('🛈 Are you sure you want to delete this movie ?')) {
-      this.moviesService.deleteMovie(id).subscribe({
-        next: () => {
-          console.log("deleted successfully");
-          this.toastr.info("🛈 Movie deleted successfully");
-          this.router.navigate(['/movies']);
-        }
-      })
-    }
-    return
+  deleteMovie(): void {
+    this.moviesService.deleteMovie(this.id).subscribe({
+      next: () => {
+        console.log("deleted successfully");
+        this.toastr.info("Movie deleted successfully");
+        this.router.navigate(['/movies']);
+      }
+    })
   }
 
 }

@@ -2,13 +2,14 @@ import {Injectable, signal} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {User} from '../Interface/User';
+import {environment} from '../environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  API_URL = 'http://localhost:3000';
+  API_URL = environment.API_URL;
   currentUser = signal<User | null>(null);
 
 
